@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro de Produtos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="produtoForm">
+
+    <ion-item>
+      <ion-label position="floating">Nome Comercial *</ion-label>
+      <ion-input formControlName="nomeComercial"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nome Técnico (Ingrediente Ativo) *</ion-label>
+      <ion-input formControlName="nomeTecnico"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Categoria *</ion-label>
+      <ion-select formControlName="categoria">
+        <ion-select-option value="inseticida">Inseticida</ion-select-option>
+        <ion-select-option value="herbicida">Herbicida</ion-select-option>
+        <ion-select-option value="fungicida">Fungicida</ion-select-option>
+        <ion-select-option value="acaricida">Acaricida</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Marca</ion-label>
+      <ion-input formControlName="marca"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Fabricante</ion-label>
+      <ion-input formControlName="fabricante"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Fornecedor</ion-label>
+      <ion-input formControlName="fornecedor"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Código Interno</ion-label>
+      <ion-input formControlName="codigoInterno"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Código de Barras</ion-label>
+      <ion-input type="tel" formControlName="codigoBarras"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Unidade de Medida *</ion-label>
+      <ion-select formControlName="unidadeMedida">
+        <ion-select-option value="L">Litro (L)</ion-select-option>
+        <ion-select-option value="ml">Mililitro (ml)</ion-select-option>
+        <ion-select-option value="Kg">Quilograma (Kg)</ion-select-option>
+        <ion-select-option value="g">Grama (g)</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Dose por Hectare *</ion-label>
+      <ion-input type="number" formControlName="doseHectare"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Preço de Compra *</ion-label>
+      <ion-input type="number" step="0.01" formControlName="precoCompra"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="ion-margin-top" (click)="salvar()">
+      Salvar
+    </ion-button>
+
+  </form>
+
+</ion-content>

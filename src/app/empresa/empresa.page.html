@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro de Empresa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="empresaForm">
+
+    <ion-item>
+      <ion-label position="floating">Razão Social *</ion-label>
+      <ion-input formControlName="razaoSocial"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nome Fantasia</ion-label>
+      <ion-input formControlName="nomeFantasia"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">CNPJ *</ion-label>
+      <ion-input formControlName="cnpj"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Inscrição Estadual</ion-label>
+      <ion-input formControlName="inscricaoEstadual"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input formControlName="telefone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">CEP</ion-label>
+      <ion-input formControlName="cep"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Logradouro</ion-label>
+      <ion-input formControlName="logradouro"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Número</ion-label>
+      <ion-input formControlName="numero"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Bairro</ion-label>
+      <ion-input formControlName="bairro"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Cidade</ion-label>
+      <ion-input formControlName="cidade"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Estado</ion-label>
+      <ion-input formControlName="estado"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="ion-margin-top" (click)="salvar()">
+      Salvar
+    </ion-button>
+
+  </form>
+
+</ion-content>
