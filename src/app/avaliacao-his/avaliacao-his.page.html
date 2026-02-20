@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Historico de avaliações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+
+  <ion-card *ngFor="let avaliacao of avaliacoes">
+
+    <ion-card-header>
+      <ion-card-title>
+        {{ avaliacao.avaliador }}
+      </ion-card-title>
+      <ion-card-subtitle>
+        {{ avaliacao.data }}
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <!-- Estrelas -->
+      <div class="stars">
+        <ion-icon 
+          *ngFor="let star of getStars(avaliacao.nota)" 
+          name="star" 
+          color="warning">
+        </ion-icon>
+
+        <ion-icon 
+          *ngFor="let star of getStars(5 - avaliacao.nota)" 
+          name="star-outline" 
+          color="medium">
+        </ion-icon>
+      </div>
+
+      <!-- Comentário -->
+      <p class="comentario">
+        Grau de infestação: {{ avaliacao.comentario }}
+      </p>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <!-- Caso não tenha avaliações -->
+  <div *ngIf="avaliacoes.length === 0" class="sem-avaliacoes">
+    <ion-icon name="chatbubble-ellipses-outline" size="large"></ion-icon>
+    <p>Nenhuma avaliação encontrada.</p>
+  </div>
+
+</ion-content>

@@ -29,5 +29,25 @@ export const routes: Routes = [
   {
     path: 'viabilidade',
     loadComponent: () => import('./viabilidade/viabilidade.page').then( m => m.ViabilidadePage)
+  },  {
+    path: 'avaliacao',
+    loadComponent: () => import('./avaliacao/avaliacao.page').then( m => m.AvaliacaoPage)
   },
+  {
+    path: 'avaliacao-his',
+    loadComponent: () => import('./avaliacao-his/avaliacao-his.page').then( m => m.AvaliacaoHisPage)
+  },
+  {
+    path: 'viabilidade-tools',
+    loadComponent: () => import('./viabilidade-tools/viabilidade-tools.page').then( m => m.ViabilidadeToolsPage)
+  },
+  {
+    path: 'agenda-aplicacao',
+    loadComponent: () => import('./agenda-aplicacao/agenda-aplicacao.page').then( m => m.AgendaAplicacaoPage)
+  },
+  {
+    path: 'balanco',
+    loadComponent: () => import('./balanco/balanco.page').then( m => m.BalancoPage)
+  },
+
 ];

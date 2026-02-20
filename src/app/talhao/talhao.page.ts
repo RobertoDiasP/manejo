@@ -1,20 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonicModule } from '@ionic/angular';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-talhao',
   templateUrl: './talhao.page.html',
   styleUrls: ['./talhao.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, ReactiveFormsModule]
 })
-export class TalhaoPage implements OnInit {
+export class TalhaoPage  {
+  talhaoForm: FormGroup;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private fb: FormBuilder) { 
+    this.talhaoForm = this.fb.group({
+      id: ['', Validators.required],
+      nome: [''],
+      localidade: ['', [Validators.required]],
+      descricao: [''],
+      cultura: [''],
+     
+    });
   }
+
+ 
 
 }

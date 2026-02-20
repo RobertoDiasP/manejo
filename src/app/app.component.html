@@ -92,7 +92,7 @@
             <!-- Aplicaçoes -->
 
              <ion-accordion value="aplicacoes">
-
+              
               <ion-item slot="header">
                 <ion-icon slot="start" ios="folder-outline" md="folder-sharp"></ion-icon>
                 <ion-label>Aplicaçoes</ion-label>
@@ -101,8 +101,20 @@
               <div slot="content">
 
                 <ion-menu-toggle auto-hide="false">
+                  <ion-item routerLink="/viabilidade-tools" lines="none">
+                    <ion-label>Dados</ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle auto-hide="false">
                   <ion-item routerLink="/viabilidade" lines="none">
                     <ion-label>Viabilidade</ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle auto-hide="false">
+                  <ion-item routerLink="/agenda-aplicacao" lines="none">
+                    <ion-label>Agenda Aplicaçao</ion-label>
                   </ion-item>
                 </ion-menu-toggle>
 
@@ -146,8 +158,8 @@
                 </ion-menu-toggle>
 
                 <ion-menu-toggle auto-hide="false">
-                  <ion-item routerLink="/talhao" lines="none">
-                    <ion-label>Lucro Estimado</ion-label>
+                  <ion-item routerLink="/balanco" lines="none">
+                    <ion-label>Balanço</ion-label>
                   </ion-item>
                 </ion-menu-toggle>
 
@@ -167,13 +179,13 @@
               <div slot="content">
 
                 <ion-menu-toggle auto-hide="false">
-                  <ion-item routerLink="/viabilidade" lines="none">
+                  <ion-item routerLink="/avaliacao" lines="none">
                     <ion-label>Nova Avaliação</ion-label>
                   </ion-item>
                 </ion-menu-toggle>
 
                 <ion-menu-toggle auto-hide="false">
-                  <ion-item routerLink="/clientes" lines="none">
+                  <ion-item routerLink="/avaliacao-his" lines="none">
                     <ion-label>Historico de Avaliação</ion-label>
                   </ion-item>
                 </ion-menu-toggle>

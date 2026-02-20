@@ -1,0 +1,82 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Dados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="form">
+
+    <ion-item>
+      <ion-label position="floating">Eficácia do Produto (%)</ion-label>
+      <ion-input type="number" formControlName="eficacia"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nível de Infestação (%)</ion-label>
+      <ion-input type="number" formControlName="nivelInfestacao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Preço do Diesel (R$/L)</ion-label>
+      <ion-input type="number" formControlName="precoDiesel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Consumo Diesel (L/ha)</ion-label>
+      <ion-input type="number" formControlName="consumoDiesel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Custo Produto (R$/ha)</ion-label>
+      <ion-input type="number" formControlName="custoProduto"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Valor Produção (R$/ha)</ion-label>
+      <ion-input type="number" formControlName="valorProducao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Perda Potencial (%)</ion-label>
+      <ion-input type="number" formControlName="perdaPotencial"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="ion-margin-top" (click)="calcular()">
+      Calcular
+    </ion-button>
+
+  </form>
+
+  <ion-card *ngIf="resultadoEsquerda !== null">
+    <ion-card-header>
+      <ion-card-title>Resultado</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <p>
+        <strong>Lado Esquerdo:</strong>
+        {{ resultadoEsquerda | number:'1.2-2' }}
+      </p>
+
+      <p>
+        <strong>Lado Direito:</strong>
+        {{ resultadoDireita | number:'1.2-2' }}
+      </p>
+
+      <div class="ion-text-center ion-margin-top">
+        <ion-badge
+          [color]="viavel ? 'success' : 'danger'"
+          class="ion-padding"
+        >
+          {{ viavel ? 'Aplicação Viável' : 'Aplicação Não Viável' }}
+        </ion-badge>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
