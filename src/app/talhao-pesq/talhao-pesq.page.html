@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Pesquisa Talhao</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- FORMULÁRIO DE PESQUISA -->
+  <form [formGroup]="pesquisaForm" (ngSubmit)="pesquisar()">
+
+    <ion-item>
+      <ion-label position="stacked">Nome do Talhão</ion-label>
+      <ion-input formControlName="nome"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="ion-margin-top">
+      Pesquisar
+    </ion-button>
+
+  </form>
+
+  <!-- RESULTADOS -->
+  <ion-list *ngIf="talhoes.length > 0" class="ion-margin-top">
+
+    <ion-item *ngFor="let talhao of talhoes">
+      <ion-label>
+        <h2>{{ talhao.nome_talhao }}</h2>
+        <p>Área: {{ talhao.tamanho }} ha</p>
+        <p>Cultura: {{ talhao.cultura }}</p>
+      </ion-label>
+
+      <ion-button fill="clear" color="primary" (click)="editar(talhao.id)">
+        Editar
+      </ion-button>
+
+      <ion-button fill="clear" color="danger" (click)="excluir(talhao.id)">
+        Excluir
+      </ion-button>
+
+    </ion-item>
+
+  </ion-list>
+
+  <ion-text color="medium" *ngIf="talhoes.length === 0 && pesquisou">
+    Nenhum talhão encontrado.
+  </ion-text>
+
+</ion-content>

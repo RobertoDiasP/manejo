@@ -1,35 +1,45 @@
 <ion-header>
   <ion-toolbar>
-
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Cadastro de Talhão</ion-title>
+    <ion-title>Cadastro talhao</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+
   <form [formGroup]="talhaoForm">
+
     <ion-item>
-      <ion-label position="floating">ID</ion-label>
-      <ion-input formControlName="id"></ion-input>
+      <ion-label position="stacked">Nome do Talhão</ion-label>
+      <ion-input formControlName="nome_talhao"></ion-input>
     </ion-item>
+
     <ion-item>
-      <ion-label position="floating">Nome</ion-label>
-      <ion-input formControlName="nome"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Localidade</ion-label>
-      <ion-input formControlName="localidade"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Descrição</ion-label>
-      <ion-textarea formControlName="descricao"></ion-textarea>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Cultura</ion-label>
+      <ion-label position="stacked">Cultura</ion-label>
       <ion-input formControlName="cultura"></ion-input>
     </ion-item>
 
+    <ion-item>
+      <ion-label position="stacked">Data Plantio</ion-label>
+      <ion-input type="date" formControlName="data_plantio"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Data Colheita</ion-label>
+      <ion-input type="date" formControlName="data_colheita"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Tamanho (ha)</ion-label>
+      <ion-input type="number" formControlName="tamanho"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="ion-margin-top" (click)="salvar()">
+      Salvar
+    </ion-button>
+
   </form>
+
 </ion-content>

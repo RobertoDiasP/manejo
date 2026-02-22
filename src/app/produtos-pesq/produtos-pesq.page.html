@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Pesquisa Produtos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- 🔎 CARD DE FILTROS -->
+  <ion-card class="ion-margin">
+    <ion-card-header>
+      <ion-card-title (click)="toggleFiltros()" >Filtros</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content *ngIf ="filtros">
+
+      <!-- Nome Comercial -->
+      <ion-item>
+        <ion-label position="stacked">Nome Comercial</ion-label>
+        <ion-input placeholder="Digite o nome"></ion-input>
+      </ion-item>
+
+      <!-- Categoria -->
+      <ion-item>
+        <ion-label position="stacked">Categoria</ion-label>
+        <ion-select placeholder="Selecione">
+          <ion-select-option value="herbicida">Herbicida</ion-select-option>
+          <ion-select-option value="fungicida">Fungicida</ion-select-option>
+          <ion-select-option value="inseticida">Inseticida</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Marca -->
+      <ion-item>
+        <ion-label position="stacked">Marca</ion-label>
+        <ion-input placeholder="Digite a marca"></ion-input>
+      </ion-item>
+
+      <!-- Preço mínimo -->
+      <ion-item>
+        <ion-label position="stacked">Preço mínimo</ion-label>
+        <ion-input type="number" placeholder="0.00"></ion-input>
+      </ion-item>
+
+      <!-- Preço máximo -->
+      <ion-item>
+        <ion-label position="stacked">Preço máximo</ion-label>
+        <ion-input type="number" placeholder="0.00"></ion-input>
+      </ion-item>
+
+      <!-- Status -->
+      <ion-item>
+        <ion-label>Somente ativos</ion-label>
+        <ion-toggle></ion-toggle>
+      </ion-item>
+
+      <!-- Botões -->
+      <div class="ion-margin-top ion-text-right">
+        <ion-button color="medium" fill="outline">
+          Limpar
+        </ion-button>
+
+        <ion-button color="primary">
+          Buscar
+        </ion-button>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <!-- 📋 LISTA DE PRODUTOS -->
+  <ion-list>
+    <ion-item *ngFor="let produto of produtos">
+      <ion-label>
+        <h2>{{ produto.nome_comercial }}</h2>
+        <p><strong>Categoria:</strong> {{ produto.categoria }}</p>
+        <p><strong>Marca:</strong> {{ produto.marca }}</p>
+        <p><strong>Preço:</strong> R$ {{ produto.preco_compra }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
