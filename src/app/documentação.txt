@@ -1,0 +1,7 @@
+quero adicionar uma tela igual a do painel talhao, que quando estiver faltando alguma 
+ação no talhao ele mude de cor para chamar a atenção do produtor para aquele talhao.
+
+Por exemplo, quero qe quando o talhao tenha alguma pendencia de aplicação prevista para data 
+atual ou esteja atrasada seja facil visualizar, caso o talhao esteja com investação alta e nao tenha 
+aplicação prevista seja facil de olhar e assim poir diante, açoes que precisem de atenção seja de facil 
+localização

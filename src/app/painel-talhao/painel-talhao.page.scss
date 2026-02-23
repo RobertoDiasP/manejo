@@ -1,0 +1,28 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // 3 colunas fixas
+  gap: 12px;
+  padding: 12px;
+}
+
+.talhao-card {
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+/* Cores baseadas na infestação */
+.success {
+  background-color: #2dd36f; // verde
+}
+
+.warning {
+  background-color: #ffc409; // amarelo
+  color: black;
+}
+
+.danger {
+  background-color: #eb445a; // vermelho
+}

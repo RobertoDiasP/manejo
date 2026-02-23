@@ -70,10 +70,21 @@ export const routes: Routes = [
     path: 'produtos-pesq',
     loadComponent: () => import('./produtos-pesq/produtos-pesq.page').then( m => m.ProdutosPesqPage),
     canActivate: [authGuard]
-  },  {
+  },
+  {
     path: 'talhao-pesq',
     loadComponent: () => import('./talhao-pesq/talhao-pesq.page').then( m => m.TalhaoPesqPage)
   },
+  {
+    path: 'painel-talhao',
+    loadComponent: () => import('./painel-talhao/painel-talhao.page').then( m => m.PainelTalhaoPage)
+  },
+  {
+    path: 'talhao-detalhes/:id',
+    loadComponent: () => 
+      import('./talhao-detalhes/talhao-detalhes.page')
+      .then(m => m.TalhaoDetalhesPage)
+  }
 
 
   

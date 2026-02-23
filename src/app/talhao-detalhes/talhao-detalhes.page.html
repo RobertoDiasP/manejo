@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalhes do Talhão</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="talhao" class="ion-padding">
+
+  <ion-card class="talhao-card" [ngClass]="getCor(talhao.infestacao)">
+    <div class="card-header-color"></div>
+
+    <ion-card-header>
+      <ion-card-title>
+        {{ talhao.nome }}
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <div class="info-row">
+        <span class="label">ID</span>
+        <span class="value">{{ talhao.id }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Plantio</span>
+        <span class="value">{{ talhao.plantio }}</span>
+      </div>
+
+      <div class="info-row infestacao">
+        <span class="label">Infestação</span>
+        <span class="value destaque">
+          {{ talhao.infestacao }}%
+        </span>
+      </div>
+
+      <div class="info-row infestacao">
+        <span class="label">Data Plantio</span>
+        <span class="value destaque">
+          15/08/2024
+        </span>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card class="talhao-card">
+    <div class="card-header-color"></div>
+
+    <ion-card-header>
+      <ion-card-title >
+       Aplicações
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="info-row" style="color:red;">
+        <span class="label" style="color:red;">Fungicida</span>
+        <span class="value">15/02/2026</span>
+      </div>
+      <div class="info-row" style="color:green;">
+        <span class="label" style="color:green;">Herbicida</span>
+        <span class="value">15/03/2024</span>
+      </div>
+      <div class="info-row" style="color:green;">
+        <span class="label" style="color:green;">Insecticida</span>
+        <span class="value">15/04/2024</span>
+      </div>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card class="talhao-card">
+    <ion-card-header>
+      <ion-card-title>
+        Avaliações pendentes
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="info-row" style="color:green;">
+        <span class="label" style="color:green;">sphenophorus</span>
+        <span class="value">15/03/2026</span>
+      </div>
+      <div class="info-row" style="color:green;">
+        <span class="label" style="color:green;">Coleta Nematoides</span>
+        <span class="value">15/04/2026</span>
+      </div>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-content>
