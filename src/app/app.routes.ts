@@ -76,7 +76,7 @@ export const routes: Routes = [
     loadComponent: () => import('./talhao-pesq/talhao-pesq.page').then( m => m.TalhaoPesqPage)
   },
   {
-<<<<<<< HEAD
+
     path: 'mapa',
     loadComponent: () => import('./mapa/mapa.page').then( m => m.MapaPage)
   },
@@ -84,7 +84,7 @@ export const routes: Routes = [
     path: 'mapa-calor',
     loadComponent: () => import('./mapa-calor/mapa-calor.page').then( m => m.MapaCalorPage)
   },
-=======
+  {
     path: 'painel-talhao',
     loadComponent: () => import('./painel-talhao/painel-talhao.page').then( m => m.PainelTalhaoPage)
   },
@@ -94,7 +94,7 @@ export const routes: Routes = [
       import('./talhao-detalhes/talhao-detalhes.page')
       .then(m => m.TalhaoDetalhesPage)
   }
->>>>>>> b9179742d13da3e9b879ba8d5e0f6bedd589ce4f
+
 
 
   
