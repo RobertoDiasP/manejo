@@ -1,9 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import {
+  IonContent,
+  IonItem,
+  IonInput,
+  IonButton,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonLabel
+} from '@ionic/angular/standalone';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import Parse from 'parse';
 
 @Component({
   selector: 'app-login',
@@ -12,42 +21,54 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [
     CommonModule,
-    IonicModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IonContent,
+    IonItem,
+    IonInput,
+    IonButton,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonLabel
   ]
 })
 export class LoginPage {
 
   loginForm: FormGroup;
-  apiUrl = 'http://104.234.30.34:5000/login'; // ajuste se necessário
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient,
     private router: Router
   ) {
+
+    // 🔹 Inicializa Parse
+    Parse.initialize(
+      'n5ukmCgTYPbRLSLH6pYkEhE9jukH7fHoU7SXtSRl',
+      'fjGIZjMaQIklmSwvl7LWVPXB4p2sYzWGAo2abjmE'
+    );
+
+    Parse.serverURL = 'https://parseapi.back4app.com';
+
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['',],
       senha: ['', Validators.required]
     });
   }
 
-  login() {
-    if (this.loginForm.invalid) return;
+ async login() {
 
-    this.http.post<any>(this.apiUrl, this.loginForm.value)
-      .subscribe({
-        next: (res) => {
-          const token = res.access_token;
+  if (this.loginForm.invalid) return;
 
-          localStorage.setItem('token', token);
+  const { email, senha } = this.loginForm.value;
 
-          this.router.navigate(['/home']); // rota após login
-        },
-        error: (err) => {
-          console.error(err);
-          alert('Credenciais inválidas');
-        }
-      });
+  try {
+
+    await Parse.User.logIn(email, senha);
+
+    this.router.navigate(['/home']);
+
+  } catch (error) {
+    alert('Credenciais inválidas');
   }
+}
 }

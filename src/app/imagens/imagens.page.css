@@ -1,0 +1,15 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.rotating-icon {
+  animation: spin 2s linear infinite;
+}
+
+ion-content {
+  --padding-bottom: calc(24px + env(safe-area-inset-bottom));
+}/*# sourceMappingURL=imagens.page.css.map */

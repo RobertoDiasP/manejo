@@ -5,3 +5,10 @@ Por exemplo, quero qe quando o talhao tenha alguma pendencia de aplicação prev
 atual ou esteja atrasada seja facil visualizar, caso o talhao esteja com investação alta e nao tenha 
 aplicação prevista seja facil de olhar e assim poir diante, açoes que precisem de atenção seja de facil 
 localização
+
+
+build: 
+
+ionic build --prod
+npx cap sync android
+npx cap open android

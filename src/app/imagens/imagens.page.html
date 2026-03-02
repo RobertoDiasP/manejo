@@ -1,0 +1,214 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Subir Imagens</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <h2>Enviar imagem</h2>
+    </ion-card-header>
+
+    <ion-card-content>
+      <!-- Campo Localização COM BOTÃO -->
+      <ion-item>
+        <ion-label position="floating">Localização</ion-label>
+        <ion-input readonly="true" [(ngModel)]="localizacao"></ion-input>
+      </ion-item>
+      
+      <!-- Indicador de loading separado (opcional) -->
+      <div *ngIf="isObtendoLocalizacao" class="ion-padding-start ion-padding-end">
+        <ion-progress-bar type="indeterminate"></ion-progress-bar>
+        <p class="ion-text-center">Obtendo localização...</p>
+      </div>
+
+      <!-- Seleção de arquivo -->
+      <ion-item>
+        <ion-label>Selecionar imagem</ion-label>
+        <input type="file" accept="image/jpeg,image/png,image/jpg,image/gif" (change)="onFileSelected($event)"
+          style="display: none;" #fileInput>
+        <ion-button slot="end" (click)="fileInput.click()" [disabled]="isUploading">
+          <ion-icon name="image" slot="start"></ion-icon>
+          Escolher
+        </ion-button>
+      </ion-item>
+
+      <!-- Preview da imagem -->
+      <div *ngIf="previewUrl" class="preview-container ion-text-center ion-margin-top">
+        <img [src]="previewUrl" alt="Preview" class="preview-image">
+
+        <div *ngIf="selectedFile" class="file-info">
+          <p>
+            <strong>{{ selectedFile.name }}</strong>
+          </p>
+          <p class="file-size">
+            Tamanho: {{ (selectedFile.size / 1024).toFixed(2) }} KB
+          </p>
+        </div>
+      </div>
+
+      <!-- Botão de envio - SEM SPIN -->
+      <ion-button expand="block" (click)="enviarImagem()" [disabled]="!selectedFile || isUploading"
+        class="ion-margin-top">
+        <ion-icon [name]="isUploading ? 'sync' : 'cloud-upload'" slot="start"></ion-icon>
+        {{ isUploading ? 'Enviando...' : 'Enviar Imagem' }}
+      </ion-button>
+
+      <!-- BOTÃO DE LOCALIZAÇÃO - SEM SPIN -->
+      <ion-button expand="block" (click)="obterLocalizacaoAtual()" [disabled]="isObtendoLocalizacao" color="primary">
+        Buscar localizaçao
+      </ion-button>
+
+
+      <!-- Barra de progresso durante upload -->
+      <div *ngIf="isUploading" class="ion-margin-top">
+        <ion-progress-bar type="indeterminate"></ion-progress-bar>
+        <p class="ion-text-center">Enviando imagem, aguarde...</p>
+      </div>
+
+      <!-- Botão limpar -->
+      <ion-button *ngIf="selectedFile" expand="block" fill="clear" (click)="limparFormulario()" [disabled]="isUploading"
+        class="ion-margin-top">
+        <ion-icon name="close" slot="start"></ion-icon>
+        Cancelar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-segment [(ngModel)]="abaSelecionada">
+        <ion-segment-button value="esv">
+          <ion-label>ESV</ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="dados">
+          <ion-label>Dados</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <!-- ABA ESV -->
+      <div *ngIf="abaSelecionada === 'esv'">
+        <!-- Campo Protocolo -->
+        <ion-item>
+          <ion-label position="fixed">Cidade</ion-label>
+          <ion-input [(ngModel)]="cidade" name="cidade"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed">Protocolo</ion-label>
+          <ion-input [(ngModel)]="protocolo" name="protocolo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Cultura</ion-label>
+          <ion-select interface="alert" [(ngModel)]="cultura" name="cultura" placeholder="Selecione">
+
+            <ion-select-option value="cana">Cana-de-açúcar</ion-select-option>
+            <ion-select-option value="soja">Soja</ion-select-option>
+            <ion-select-option value="milho">Milho</ion-select-option>
+            <ion-select-option value="cafe">Café</ion-select-option>
+            <ion-select-option value="algodao">Algodão</ion-select-option>
+
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Doença/Praga/Vetor</ion-label>
+          <ion-select interface="alert" [(ngModel)]="doenca" name="doenca" placeholder="Selecione">
+
+            <ion-select-option value="Estria">
+              Falsa Estria
+            </ion-select-option>
+
+            <ion-select-option value="Falsa Estria">
+              Estria
+            </ion-select-option>
+
+            <ion-select-option value="Nao Identificado">
+              Não Sei
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+
+      <!-- ABA Dados -->
+      <div *ngIf="abaSelecionada === 'dados'">
+
+        <!-- Campo Protocolo -->
+        <ion-item>
+          <ion-label position="fixed">Cidade</ion-label>
+          <ion-input [(ngModel)]="cidade" name="cidade"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed">Protocolo</ion-label>
+          <ion-input [(ngModel)]="protocolo" name="protocolo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed">Cultura</ion-label>
+          <ion-input [(ngModel)]="cultura" name="cultura"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed">Doença/Praga/Vetor</ion-label>
+          <ion-input [(ngModel)]="doenca" name="doenca"> </ion-input>
+        </ion-item>
+      </div>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
+
+<style>
+  .preview-container {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+  }
+
+  .preview-image {
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  .file-info {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f4f4f4;
+    border-radius: 4px;
+  }
+
+  .file-size {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+
+  code {
+    background: #f4f4f4;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+
+  ion-note {
+    display: block;
+    margin-top: 5px;
+  }
+</style>
